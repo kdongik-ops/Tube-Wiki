@@ -10,6 +10,7 @@ import argparse
 import contextlib
 import json
 import os
+import shutil
 import subprocess
 import sys
 import threading
@@ -235,9 +236,20 @@ class StepExecutor:
             sys.exit(1)
 
         prompt = preamble + step_file.read_text(encoding='utf-8')
+
+        # Windows에선 npm이 claude를 claude.CMD(배치)로 설치하는데 CreateProcess는
+        # .cmd를 직접 실행하지 못한다(shell=False → WinError 2). 실제 경로를 해석해
+        # .cmd/.bat이면 cmd.exe로 감싼다. 프롬프트는 argv 대신 stdin으로 넘겨
+        # cmd.exe의 특수문자 해석과 커맨드라인 길이 한도를 모두 피한다.
+        claude_exe = shutil.which("claude") or "claude"
+        cmd = [claude_exe, "-p", "--dangerously-skip-permissions", "--output-format", "json"]
+        if sys.platform == "win32" and claude_exe.lower().endswith((".cmd", ".bat")):
+            cmd = ["cmd", "/c", *cmd]
+
         result = subprocess.run(
-            ["claude", "-p", "--dangerously-skip-permissions", "--output-format", "json", prompt],
-            cwd=self._root, capture_output=True, text=True, timeout=1800,
+            cmd,
+            cwd=self._root, capture_output=True, text=True, encoding="utf-8",
+            input=prompt, timeout=1800,
         )
 
         if result.returncode != 0:
