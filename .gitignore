@@ -4,6 +4,13 @@ out/
 next-env.d.ts
 tsconfig.tsbuildinfo
 
+# env (실제 키가 담긴 로컬 파일은 커밋 금지, .env.example만 추적)
+.env
+.env*.local
+
 # phase execution outputs
 phases/**/phase*-output.json
 phases/**/step*-output.json
+
+# generated wiki markdown (WIKI_OUTPUT_DIR)
+/output/
