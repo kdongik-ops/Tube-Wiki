@@ -14,3 +14,7 @@ phases/**/step*-output.json
 
 # generated wiki markdown (WIKI_OUTPUT_DIR)
 /output/
+
+# python (harness scripts)
+__pycache__/
+*.pyc
