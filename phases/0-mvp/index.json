@@ -46,7 +46,7 @@
       "name": "ui",
       "status": "completed",
       "started_at": "2026-07-10T12:31:03+0900",
-      "completed_at": "2026-07-10T12:45:00+0900",
+      "completed_at": "2026-07-10T12:57:38+0900",
       "summary": "표현 계층: 컴포넌트 2개 — VerificationBadge(verdict별 green/amber/red 라벨·좌측 색 dot·옅은 배경), ResultView(메타 헤더→검증 카드 강조→TL;DR·결론·개요·섹션·핵심포인트·인용·엔티티·키워드 렌더, 원본 MD 미노출). page.tsx는 client component로 idle/loading/success/error를 useState 관리하고 폼·로딩·에러를 인라인 유지, POST /api/summarize 호출→성공 시 ResultView, 실패 시 ApiError.error 카드. markdown을 Blob→{videoId}.md로 다운로드하고 savedPath 보조표시. globals.css fade-in(0.3s) 유틸 추가, layout body bg-neutral-50 라이트테마. UI_GUIDE 준수(무채색+검증에만 시맨틱색, max-w-3xl 좌측정렬, 안티패턴 회피). build/lint/vitest(30) 통과. 런타임 확인은 키 필요."
     }
   ],
