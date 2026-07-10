@@ -14,7 +14,8 @@
       "name": "core-types",
       "status": "completed",
       "started_at": "2026-07-09T18:50:25+0900",
-      "summary": "도메인 모델 타입을 src/types/index.ts 한 파일에 선언(로직 없음): VideoMetadata·TranscriptSegment·Verdict·TitleVerification·SummarySection·SummaryResult + API 계약(SummarizeRequest·SummarizeResponse·ApiErrorCode·ApiError). 명세와 필드명·유니온 값 정확히 일치. build(tsc 타입체크)·vitest 통과."
+      "summary": "도메인 모델 타입을 src/types/index.ts 한 파일에 선언(로직 없음): VideoMetadata·TranscriptSegment·Verdict·TitleVerification·SummarySection·SummaryResult + API 계약(SummarizeRequest·SummarizeResponse·ApiErrorCode·ApiError). 명세와 필드명·유니온 값 정확히 일치. build(tsc 타입체크)·vitest 통과.",
+      "completed_at": "2026-07-10T10:18:53+0900"
     },
     {
       "step": 2,
