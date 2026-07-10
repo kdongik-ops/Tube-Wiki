@@ -20,7 +20,10 @@
     {
       "step": 2,
       "name": "youtube-service",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-07-10T10:31:40+0900",
+      "summary": "lib/youtube-url.ts(순수): extractVideoId로 watch/youtu.be/shorts/embed/m. 형태에서 11자 videoId 추출·검증(실패 null). services/youtube.ts(네트워크): fetchMetadata는 Data API v3 videos.list 단일 경로(oEmbed 없음)로 메타데이터 채움(ISO8601 duration 파싱·최대 썸네일 선택·키/미존재 시 예외), fetchTranscript는 youtube-transcript 사용·자막 없음은 NoTranscriptError(code NO_TRANSCRIPT)로 구분, 그 외는 그대로 throw. table-driven URL 테스트 추가. build·vitest(16) 통과.",
+      "completed_at": "2026-07-10T10:40:30+0900"
     },
     {
       "step": 3,
