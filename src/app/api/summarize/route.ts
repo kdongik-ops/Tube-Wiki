@@ -93,6 +93,8 @@ export async function POST(req: Request): Promise<Response> {
     if (isNoTranscript(err)) {
       return errorResponse("NO_TRANSCRIPT");
     }
+    // 예상치 못한 내부 오류는 서버 로그에만 실제 원인을 남긴다(응답엔 노출하지 않음).
+    console.error("[/api/summarize] 요약 실패:", err);
     return errorResponse("INTERNAL");
   }
 }
