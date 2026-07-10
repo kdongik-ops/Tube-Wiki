@@ -28,7 +28,10 @@
     {
       "step": 3,
       "name": "summarize",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-07-10T10:48:00+0900",
+      "summary": "요약 파이프라인 3파일: lib/prompt.ts(순수) buildSummaryPrompt이 한국어·JSON-only·제목검증(verification)·과잉압축금지·정보밀도를 강제하는 system/user 프롬프트 조립(자막 100k자 초과 시 절단+명시). services/claude.ts summarize는 @anthropic-ai/sdk messages.create(모델 SUMMARY_MODEL ?? claude-sonnet-5, max_tokens 8192)로 호출 후 코드펜스 제거·첫{~끝} 방어적 JSON 파싱·필수필드 최소검증·verdict 유니온 밖이면 partial 보정. lib/markdown.ts(순수) buildMarkdown은 front matter+13개 구성요소를 결정론적 렌더(선택 메타/빈 배열 섹션 조용히 생략). prompt·markdown 순수함수만 테스트(claude SDK 목킹 없음). build·vitest(30) 통과.",
+      "completed_at": "2026-07-10T11:00:51+0900"
     },
     {
       "step": 4,
