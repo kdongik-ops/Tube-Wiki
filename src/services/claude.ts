@@ -111,10 +111,16 @@ export async function summarize(
 
   const message = await client.messages.create({
     model: process.env.SUMMARY_MODEL ?? "claude-sonnet-5",
-    max_tokens: 8192,
+    max_tokens: 16000,
     system,
     messages: [{ role: "user", content: user }],
   });
+
+  // 초장편 영상은 요약이 상한을 넘겨 잘릴 수 있다. 잘리면 JSON이 깨지므로
+  // 모호한 파싱 에러 대신 원인을 명확히 알리는 에러로 구분한다.
+  if (message.stop_reason === "max_tokens") {
+    throw new Error("요약이 너무 길어 응답이 잘렸습니다(max_tokens 초과).");
+  }
 
   const json = extractJson(extractText(message));
   return toSummaryResult(json);
