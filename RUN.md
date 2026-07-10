@@ -10,7 +10,7 @@ Claude 없이 로컬 터미널에서 앱을 실행하는 절차. **권장 방식
 ## 최초 1회 준비
 
 ```powershell
-cd D:\Agent\harness_framework
+cd D:\Agent\Tube-Wiki
 npm install            # 이미 node_modules 있으면 생략 가능
 ```
 
