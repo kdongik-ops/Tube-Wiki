@@ -36,10 +36,10 @@
     {
       "step": 4,
       "name": "api-route",
-      "status": "error",
+      "status": "completed",
       "started_at": "2026-07-10T11:09:22+0900",
-      "error_message": "[3회 시도 후 실패] Step did not update status",
-      "failed_at": "2026-07-10T11:31:43+0900"
+      "completed_at": "2026-07-10T12:27:03+0900",
+      "summary": "src/app/api/summarize/route.ts(runtime=nodejs): url→videoId→fetchMetadata+fetchTranscript(필수)→summarize→buildMarkdown→WIKI_OUTPUT_DIR에 best-effort 인라인 저장; 에러 3종(400/422/500) 한국어 매핑, 스택 미노출. AC(build/lint/vitest 30) 통과."
     },
     {
       "step": 5,
