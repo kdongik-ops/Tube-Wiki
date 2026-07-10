@@ -20,6 +20,15 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Optional
 
+# Windows(한국어 로캘)에서 stdout이 콘솔이 아니라 파일/파이프로 리다이렉트되면
+# 기본 인코딩이 cp949가 되어 상태 기호(✓ ✗ ↻ ⏸, 스피너 ◐◓◑◒) 출력 시
+# UnicodeEncodeError로 크래시한다. UTF-8로 강제한다.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8")
+    except (AttributeError, ValueError):
+        pass
+
 ROOT = Path(__file__).resolve().parent.parent
 
 
