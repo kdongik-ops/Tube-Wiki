@@ -34,7 +34,32 @@ npm run start     # 서버 시작 → http://localhost:3000
 
 - 브라우저에서 **http://localhost:3000** 접속 → YouTube URL 입력 → 요약.
 - 결과 위키는 화면에 표시되고 `output/{videoId}.md`로 저장된다.
-- **종료**: 터미널에서 `Ctrl + C`. 서버를 유지하려면 그 터미널 창을 닫지 않는다.
+- 서버를 유지하려면 그 터미널 창을 닫지 않는다. 종료 방법은 아래 참고.
+
+## 종료 (서버 끄기)
+
+**정상 종료**: 서버가 실행 중인 터미널에서 `Ctrl + C`. (그 터미널 창을 닫아도 서버는 함께 종료된다.)
+
+**터미널을 이미 닫아 서버가 백그라운드에 남았을 때** (포트 3000을 계속 점유하는 경우):
+
+```powershell
+# 1) 3000 포트를 점유한 프로세스의 PID 확인
+Get-NetTCPConnection -LocalPort 3000 -State Listen | Select-Object OwningProcess
+
+# 2) 해당 PID 종료
+Stop-Process -Id <위에서_나온_PID> -Force
+
+# 3) 종료 확인 — 아무 것도 출력되지 않으면 꺼진 것
+Get-NetTCPConnection -LocalPort 3000 -State Listen
+```
+
+한 줄로 처리:
+
+```powershell
+Get-NetTCPConnection -LocalPort 3000 -State Listen | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }
+```
+
+> 종료 후 다시 켜려면 프로덕션은 `npm run start`(코드 변경이 있었으면 `npm run build` 먼저), 개발 모드는 `npm run dev`.
 
 ## 코드 수정 후 반영
 
