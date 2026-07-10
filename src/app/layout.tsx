@@ -13,7 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body className="min-h-screen bg-neutral-50 text-neutral-900">
+        {children}
+      </body>
     </html>
   );
 }
